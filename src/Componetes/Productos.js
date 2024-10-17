@@ -25,7 +25,7 @@ export const Productos = () => {
                 <div className="product-grid">
                     {products.map(product => (
                         <div key={product.id} className="product-card">
-                            <img src={`src/img/${product.id}.jpg`} alt={product.name} />
+                            <img src={`img/${product.id}.jpg`} alt={product.name} />
                             <h3>{product.name}</h3>
                             <p>{product.price.toFixed(2)} €</p>
                             <button onClick={() => addToCart(product.id)}>Añadir al carrito</button>
@@ -33,9 +33,7 @@ export const Productos = () => {
                     ))}
                 </div>
             </main>
-
         </div>
     )
 }
-
 export default Productos;
