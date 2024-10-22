@@ -19,13 +19,15 @@ export const Productos = () => {
         // Aquí añadirías la lógica real para agregar al carrito
     };
     return (
+        
         <div className="App">
             <h1>Nuestra Tienda</h1>
             <main>
                 <div className="product-grid">
                     {products.map(product => (
                         <div key={product.id} className="product-card">
-                            <img src={`img/${product.id}.jpg`} alt={product.name} />
+                            
+                            <img src="https://cs6.pikabu.ru/avatars/625/v625646-972862207.jpg" alt={product.name} />
                             <h3>{product.name}</h3>
                             <p>{product.price.toFixed(2)} €</p>
                             <button onClick={() => addToCart(product.id)}>Añadir al carrito</button>
