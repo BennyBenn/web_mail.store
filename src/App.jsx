@@ -44,7 +44,8 @@ function App() {
     <>
 
     {user ?  <Products products={filteredProducts} correoUsuario={user.email}/> : <Login/>}
-    <Header pasarFiltros={setFilters}/>
+    {user ?  <Header pasarFiltros={setFilters}/>: <Login/>}
+    
     
      <Footer />
      </>
