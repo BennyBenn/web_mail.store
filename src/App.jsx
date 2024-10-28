@@ -11,40 +11,40 @@ const auth= getAuth(appFireBase)
 
  
 function App() {
-  
-const [products, setProducts] = useState(initailProducts)
-const [filters, setFilters] = useState({
-  category: 'all',
-  minPrice:0
-})
-
-const filterProducts = (products) => {
-  return products.filter(product => {
-    return (
-      product.price >= filters.minPrice &&
-      (
-        filters.category ==='all' ||
-        product.category === filters.category
-      )
-    )
+    const [user, setUser] = useState(null)
+  onAuthStateChanged(auth,(usuarioFireBase)=>{
+    if(usuarioFireBase){
+      setUser(usuarioFireBase)
+    }else setUser(null)
   })
-}
+    
+  const [products, setProducts] = useState(initailProducts)
+  const [filters, setFilters] = useState({
+    category: 'all',
+    minPrice:0
+  })
 
-const filteredProducts = filterProducts(products)
+  const filterProducts = (products) => {
+    return products.filter(product => {
+      return (
+        product.price >= filters.minPrice &&
+        (
+          filters.category ==='all' ||
+          product.category === filters.category
+        )
+      )
+    })
+  }
 
-const [user, setUser] = useState(null)
-onAuthStateChanged(auth,(usuarioFireBase)=>{
-  if(usuarioFireBase){
-    setUser(usuarioFireBase)
-  }else setUser(null)
-})
+  const filteredProducts = filterProducts(products)
+
+
   return (
    
     <>
 
     {user ?  <Products products={filteredProducts} correoUsuario={user.email}/> : <Login/>}
-    {user ?  <Header pasarFiltros={setFilters}/>: null}
-    
+    <Header pasarFiltros={setFilters}/>
     
      <Footer />
      </>
