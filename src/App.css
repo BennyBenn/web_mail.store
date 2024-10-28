@@ -1,3 +1,48 @@
+/*login*/
+.padre{
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+.tamaño-imagen{
+  width: 70%;
+  height: 70%;
+  margin-top: 100px;
+}
+
+.estilo-foto-perfil{
+  border-radius: 50%;
+  height: 120px;
+  width: 120px;
+  margin: 0 auto;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+.cajaDeTexto{
+  background-color: #cccccc40;
+  border-color: slategray;
+  border-radius: 30px;
+  width: 100%;
+  padding: 15px;
+  border-width: 0px;
+  margin-bottom: 20px;
+
+}
+.cajaDeTexto:focus{
+  outline: 1px solid darkgoldenrod;
+  box-shadow: 0 0 10px darkgoldenrod;
+}
+.btnForm{
+  background-color: #990b0b40;
+  border-color: slategray;
+  border-radius: 30px;
+  width: 100%;
+  padding: 15px;
+  border-width: 0px;
+  margin-bottom: 20px;
+  
+}
+
 .App {
   text-align: center;
 }
@@ -141,3 +186,5 @@ footer {
 
 ul{text-decoration: none;}
 li{list-style-type: none;}
+
+
