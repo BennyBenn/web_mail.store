@@ -1,18 +1,11 @@
 import './Products.css'
 import { AddToCartIcon  } from './iconos.jsx'
-import appFireBase from 'C:/Users/monica/Documents/e-comerse/web_mail.store/src/credencialesFireBase.js'
-import { getAuth, signOut} from 'firebase/auth' 
-const auth= getAuth(appFireBase)
 
 export function Products ({ products}) {
     return (
-      
       <main className='products'>
-        
-        <button onClick={()=> signOut(auth)}> salir</button>
         <ul>
           {products.slice(0, 20).map(product => {
-  
             return (
               <li key={product.id}>
                 <img
@@ -20,10 +13,12 @@ export function Products ({ products}) {
                   alt={product.title}
                 />
                 <div>
-                  <strong>{product.title}</strong> - ${product.price}
+                  <strong>{product.title}</strong>
+                  <br /> 
+                  <b>- ${product.price}</b>
                 </div>
                 <div>
-                    <button>
+                    <button class="boton_botton">
                         <AddToCartIcon />
                     </button>
                 </div>

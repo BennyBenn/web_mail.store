@@ -45,4 +45,7 @@
     object-fit: cover;
     background: #fff;
   }
-  
+
+.boton_botton{
+  justify-content: space-between;
+}

@@ -1,12 +1,13 @@
 import './Footer.css'
+import { Filtros } from './Filtros'
 
-export function Footer () {
+export function Footer ({pasarFiltros}) {
   // const { filters } = useFilters()
 
   return (
     <footer className='footer'>
-      <h4>E-commerce ⚛️ － <span>@equipo1  </span></h4>
-    
+      <Filtros filtro={pasarFiltros}/>
+      <h4>E-commerce ⚛️ － <span>@DreamTeam</span></h4>
     </footer>
   )
 }

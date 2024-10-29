@@ -1,27 +1,27 @@
 import { useState } from 'react';
 import './App.css'
 import { Products } from './Componetes/productos'
-import { products as initailProducts  } from 'C:/Users/monica/Documents/e-comerse/web_mail.store/src/Componetes/productos/products.json'
+import { products as initailProducts } from '../src/Componetes/productos/products.json'
 import { Header } from './Componetes/header.jsx';
-import { Footer } from './Componetes/footer.jsx'; 
+import { Footer } from './Componetes/footer.jsx';
 import appFireBase from '../src/credencialesFireBase'
-import { getAuth, onAuthStateChanged} from 'firebase/auth' 
-import {Login} from 'C:/Users/monica/Documents/e-comerse/web_mail.store/src/Componetes/Login.jsx'; 
-const auth= getAuth(appFireBase)
+import { getAuth, onAuthStateChanged } from 'firebase/auth'
+import { Login } from '../src/Componetes/Login.jsx';
+const auth = getAuth(appFireBase)
 
- 
+
 function App() {
-    const [user, setUser] = useState(null)
-  onAuthStateChanged(auth,(usuarioFireBase)=>{
-    if(usuarioFireBase){
+  const [user, setUser] = useState(null)
+  onAuthStateChanged(auth, (usuarioFireBase) => {
+    if (usuarioFireBase) {
       setUser(usuarioFireBase)
-    }else setUser(null)
+    } else setUser(null)
   })
-    
+
   const [products, setProducts] = useState(initailProducts)
   const [filters, setFilters] = useState({
     category: 'all',
-    minPrice:0
+    minPrice: 0
   })
 
   const filterProducts = (products) => {
@@ -29,7 +29,7 @@ function App() {
       return (
         product.price >= filters.minPrice &&
         (
-          filters.category ==='all' ||
+          filters.category === 'all' ||
           product.category === filters.category
         )
       )
@@ -40,15 +40,12 @@ function App() {
 
 
   return (
-   
-    <>
 
-    {user ?  <Products products={filteredProducts} correoUsuario={user.email}/> : <Login/>}
-    {user ?  <Header pasarFiltros={setFilters}/>: <Login/>}
-    
-    
-     <Footer />
-     </>
+    <>
+      {user ? <Header /> : null}
+      {user ? <Products products={filteredProducts} correoUsuario={user.email} /> : <Login />}
+      <Footer pasarFiltros={setFilters} />
+    </>
 
   );
 }
