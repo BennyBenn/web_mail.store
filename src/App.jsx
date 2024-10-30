@@ -7,8 +7,6 @@ import { Footer } from './Componetes/footer.jsx';
 import appFireBase from '../src/credencialesFireBase'
 import { getAuth, onAuthStateChanged } from 'firebase/auth'
 import { Login } from '../src/Componetes/Login.jsx';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { Carrito } from './Componetes/Carrito.jsx';
 const auth = getAuth(appFireBase)
 
 
@@ -44,13 +42,8 @@ function App() {
 
     <>
       {user ? <Header /> : null}
-      <Router>
-        <Routes>
-          <Route path="/" element={user ? <Products products={filteredProducts} correoUsuario={user.email} /> : <Login />}/>
-          <Route path="/Carrito" element={<Carrito />} />
-        </Routes>
-      </Router>
-      
+      {user ? <Products products={filteredProducts} correoUsuario={user.email} /> : <Login />} 
+        
       <Footer pasarFiltros={setFilters} />
     </>
 
