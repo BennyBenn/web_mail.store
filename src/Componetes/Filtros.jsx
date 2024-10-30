@@ -35,8 +35,8 @@ export function Filtros( {filtro}){
                 <label htmlFor={filtroCategoriaid}>categoria</label>
                 <select  id={filtroCategoriaid} onChange={cambiarCategoria}>
                     <option value="all">todas</option>
-                    <option value="laptops">portatiles</option>
-                    <option value="smartphones">celulares</option>
+                    <option value="CD">CD</option>
+                    <option value="Cassette">Cassette</option>
 
                 </select>
             </div>
