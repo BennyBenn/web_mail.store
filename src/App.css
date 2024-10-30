@@ -109,6 +109,7 @@ body {
   margin: 0;
   padding: 0;
   background-color: #f4f4f4;
+  width: 100%;
 }
 
 header {
@@ -135,8 +136,33 @@ ul li a {
   text-decoration: none;
 }
 
+.header-boton ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+}
+
+.header-boton li {
+  margin: 0 1rem;
+}
+
+.header-boton ul li:hover{
+  border-radius: 8px;
+  background: #007bff;
+  color: #fff;
+  cursor: pointer;
+  padding: 2px;
+ }
+
+.header-boton li a {
+  color: white;
+  text-decoration: none;
+}
+
 main {
-  max-width: 1200px;
+  max-width: 80%;
   margin: 2rem auto;
   padding: 0 1rem;
 }

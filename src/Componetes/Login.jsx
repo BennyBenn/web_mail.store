@@ -5,6 +5,7 @@ const auth = getAuth(appFireBase)
 
 
 export const Login = () => {
+    const Mensaje = document.getElementById('AlertMensaje');
     const [registrando,setRegistrando]=useState(false)
     const funcAutenticacion = async(e) =>{
         e.preventDefault();
@@ -14,14 +15,14 @@ export const Login = () => {
         try {
             await createUserWithEmailAndPassword(auth,correo,contraseña)
         } catch (error) {
-            alert("asegurate que la contraseña tenga mas de 8 caracteres")
+            Mensaje = "Asegurate que la contraseña tenga mas de 8 caracteres";
         }
             
         }else {
             try {
                 await signInWithEmailAndPassword(auth,correo,contraseña)
             } catch (error) {
-                alert("el correo o la copntraseña son erroneos")
+                Mensaje = "El correo o la contraseña son incorrectos";
             }
             
 
@@ -30,7 +31,7 @@ export const Login = () => {
     return (
         <div className="container">
             <div className="row">
-
+            <div className="col-md-4"></div>
                 <div className="col-md-4">
                     <div className="padre">
                         <div className="card card-body shadow-lg">
@@ -38,16 +39,13 @@ export const Login = () => {
                             <form onSubmit={funcAutenticacion}>
                                 <input id="email"  type="text" placeholder="ingresar e-mail" className="cajaDeTexto"/>
                                 <input id="password" type="password" placeholder="ingresar contraseña" className="cajaDeTexto"/>
-                                <button className="btnForm">{registrando ? "registrate": "inicia sesion"}</button>
+                                <div className="col-md-12 text-right"><button className="btnForm text-right">{registrando ? "Registrate": "Inicia sesion"}</button></div>
                             </form>
-                            <h4 className="texto">{registrando ? "si ya tienes cuenta": "no tienes cuenta"}<button className="btnCambio" onClick={()=> setRegistrando(!registrando)}>{registrando ? "inicia sesion": "Registrate"}</button></h4>
+                            <h4 className="texto">{registrando ? "Si ya tienes cuenta": "No tienes cuenta  "}<button className="btnCambio" onClick={()=> setRegistrando(!registrando)}>{registrando ? "Inicia sesion": "Registrate"}</button></h4>
                         </div>
                     </div>
                 </div>
-                <div className="col-md-8">
-                <img src="https://imgs.search.brave.com/EsbnmR18op5E3DYTIcWYVCF2vv8fpAxkbB6R-33rqX8/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9pbWFn/ZXMudmV4ZWxzLmNv/bS9tZWRpYS91c2Vy/cy8zLzIwMDk4NS9p/c29sYXRlZC9wcmV2/aWV3L2MzMzhhMjlj/ZTIyN2Q3NTFiMjdm/OGIxNDFjZGI1YWZh/LW1hbm8tY29uLWVs/LWljb25vLWRlLWNh/cnJpdG8tZGUtY29t/cHJhcy5wbmc"  className="tamaño-imagen" />
-               
-                </div>
+                <div className="col-md-4"></div>
             </div>
         </div>
     )

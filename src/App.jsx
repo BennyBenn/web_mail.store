@@ -7,6 +7,8 @@ import { Footer } from './Componetes/footer.jsx';
 import appFireBase from '../src/credencialesFireBase'
 import { getAuth, onAuthStateChanged } from 'firebase/auth'
 import { Login } from '../src/Componetes/Login.jsx';
+import { Carrito } from './Componetes/Carrito.jsx';
+
 const auth = getAuth(appFireBase)
 
 
@@ -16,13 +18,13 @@ function App() {
     if (usuarioFireBase) {
       setUser(usuarioFireBase)
     } else setUser(null)
-  })
+  });
 
-  const [products, setProducts] = useState(initialProducts)
+  const [products, setProducts] = useState(initialProducts);
   const [filters, setFilters] = useState({
     category: 'all',
     minPrice: 0
-  })
+  });
 
   const filterProducts = (products) => {
     return products.filter(product => {
@@ -42,11 +44,9 @@ function App() {
 
     <>
       {user ? <Header /> : null}
-      {user ? <Products products={filteredProducts} correoUsuario={user.email} /> : <Login />} 
-        
+      {user ? <Products products={filteredProducts} correoUsuario={user.email} /> : <Login />}
       <Footer pasarFiltros={setFilters} />
     </>
-
   );
 }
 

@@ -1,6 +1,9 @@
-import { useState,useId } from 'react'
+import { useState,useId, createContext } from 'react'
 import './filtros.css'
-export function Filtros( {filtro}){
+
+export const FiltersContext = createContext;
+
+export function Filtros({filtro}){
     const [minPrice,setMinPrice]=useState(0)
 
     const precioMinimoid=useId()

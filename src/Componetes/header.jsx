@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom'
+import { Carrito } from './Carrito'
 import appFireBase from 'D:/GitGub/web_mail.store/src/credencialesFireBase.js'
 import { getAuth, signOut } from 'firebase/auth'
 
@@ -6,26 +6,24 @@ const auth = getAuth(appFireBase)
 export function Header() {
     return (
         <header>
-            <div className="col-md-12">
-                <div className="row">
-                    <div className="col-md-11">
-                            <h1> <i class="fa-solid fa-shop"></i> Sycom Store</h1>
+            <div class="col-md-12">
+                <div class="row">
+                    <div class="col-md-1"></div>
+                    <div class="col-md-10 text-center">
+                        <h1> <i class="fa-solid fa-shop"></i>  Sycom Store</h1>
                     </div>
-                    <div className="col-md-1">
-                        <ul className="boton-header">
+                    <div class="col-md-1 header-boton">
+                        <ul>
                             <li>
-                                <span className="fa-solid fa-cart-shopping">Carrito</span>
+                                <a href="./Carrito.jsx"><i class="fa-solid fa-cart-shopping"></i>Carrito</a>
                             </li>
                             <li>
-                                <a className="fa-solid fa-right-from-bracket" onClick={() => signOut(auth)}></a>Salir
+                                <a onClick={() => signOut(auth)}><i class="fa-solid fa-right-from-bracket"></i>Salir</a>
                             </li>
-
                         </ul>
-
                     </div>
                 </div>
             </div>
-
         </header>
     )
 
