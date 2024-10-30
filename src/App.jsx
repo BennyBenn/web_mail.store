@@ -1,12 +1,14 @@
 import { useState } from 'react';
 import './App.css'
 import { Products } from './Componetes/productos'
-import { products as initailProducts } from '../src/Componetes/productos/products.json'
+import { products as initialProducts } from '../src/Componetes/productos/products.json'
 import { Header } from './Componetes/header.jsx';
 import { Footer } from './Componetes/footer.jsx';
 import appFireBase from '../src/credencialesFireBase'
 import { getAuth, onAuthStateChanged } from 'firebase/auth'
 import { Login } from '../src/Componetes/Login.jsx';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { Carrito } from './Componetes/Carrito.jsx';
 const auth = getAuth(appFireBase)
 
 
@@ -18,7 +20,7 @@ function App() {
     } else setUser(null)
   })
 
-  const [products, setProducts] = useState(initailProducts)
+  const [products, setProducts] = useState(initialProducts)
   const [filters, setFilters] = useState({
     category: 'all',
     minPrice: 0
@@ -38,12 +40,17 @@ function App() {
 
   const filteredProducts = filterProducts(products)
 
-
   return (
 
     <>
       {user ? <Header /> : null}
-      {user ? <Products products={filteredProducts} correoUsuario={user.email} /> : <Login />}
+      <Router>
+        <Routes>
+          <Route path="/" element={user ? <Products products={filteredProducts} correoUsuario={user.email} /> : <Login />}/>
+          <Route path="/Carrito" element={<Carrito />} />
+        </Routes>
+      </Router>
+      
       <Footer pasarFiltros={setFilters} />
     </>
 
